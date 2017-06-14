@@ -9,4 +9,5 @@ public interface HeroInt extends PersInt {
     void eat();
     void sleep();
     void lvlUp();
+
 }

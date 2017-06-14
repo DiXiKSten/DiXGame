@@ -1,19 +1,20 @@
 package object;
 
 import model.Model;
+import model.Permeshalka;
 
 import java.awt.*;
 
 /**
  * Created by DiX on 13.06.2017.
  */
-public class WarriorChar extends Pers implements HeroInt {
+public class WarriorChar extends Heroes {
 
     public WarriorChar(String name, boolean pol) {
         setName(name);
         setPol(pol);
         setLvl(1);
-        setHelths(stackHP*2);
+        setHelths(stackHP * 2);
         setAttackPower(stackAP);
         setSpellPower(0);
         setX(Model.FIELD_POSITION);
@@ -32,11 +33,6 @@ public class WarriorChar extends Pers implements HeroInt {
 
     @Override
     public void die() {
-
-    }
-
-    @Override
-    public void move() {
 
     }
 
@@ -63,8 +59,8 @@ public class WarriorChar extends Pers implements HeroInt {
     @Override
     public void show(Graphics graphics) {
         graphics.setColor(Color.PINK);
-        graphics.fillOval(getX()-40,getY()-40,80,80);
+        graphics.fillOval(getX() - 40, getY() - 40, 80, 80);
         graphics.setColor(Color.BLACK);
-        graphics.drawString(getName(),getX()-28,getY()+07);
+        graphics.drawString(getName(), getX() - 28, getY() + 07);
     }
 }

@@ -1,14 +1,14 @@
 package view;
 
 import controller.Controller;
+import controller.EventListener;
 import object.Pers;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.net.URL;
-import java.util.Set;
+import java.util.ArrayList;
 
 /**
  * Created by DiX on 13.06.2017.
@@ -17,7 +17,7 @@ public class View extends JFrame {
 
     private GameLvl gameLvl;
     private Controller controller;
-    private Set<Pers> set;
+    private ArrayList<Pers> set;
     String clas="";
     String nam="";
 
@@ -25,10 +25,17 @@ public class View extends JFrame {
         this.controller=controller;
     }
 
+    public void update(){
+        gameLvl.repaint();
+    }
+
+    public Controller getController() {
+        return controller;
+    }
+
     public void init() {
         gameLvl = new GameLvl(this);
         add(gameLvl);
-
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setSize(900, 900);
         setLocationRelativeTo(null);
@@ -37,7 +44,6 @@ public class View extends JFrame {
     }
 
     public String[] chooseHero(){
-
 
         JFrame frame = new JFrame("Выбор героя");
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -104,11 +110,12 @@ public class View extends JFrame {
         return st;
     }
 
-    public Set<Pers> getAllPers(){
+    public ArrayList<Pers> getAllPers(){
         return controller.getPers();
     }
 
-    public void setEventListener(Controller controller) {
-        gameLvl.setEventListener(controller);
+    public void setEventListener(EventListener eventListener){
+        gameLvl.setEventListener(eventListener);
     }
+
 }

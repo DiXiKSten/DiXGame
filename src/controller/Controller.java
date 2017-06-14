@@ -1,11 +1,12 @@
 package controller;
 
 import model.Model;
+import model.Permeshalka;
 import object.Pers;
 import view.View;
 
-import java.util.EventListener;
-import java.util.Set;
+import java.util.ArrayList;
+
 
 /**
  * Created by DiX on 13.06.2017.
@@ -17,18 +18,28 @@ public class Controller implements EventListener{
 
     public Controller() {
         view = new View(this);
-        model = new Model(this);
-        model.start();
+        model = new Model();
         view.init();
-        view.setEventListener(this);;
+        model.setEventListener(this);
+        view.setEventListener(this);
+        model.start();
+        view.update();
+
     }
 
-    public Set<Pers> getPers(){
+    public ArrayList<Pers> getPers(){
         return model.getAllPers();
     }
+
     public String[] getChoose(){
         String[] s = view.chooseHero();
         if (s[1].equals(""))s[1]="New Player";
         return s;
+    }
+
+    @Override
+    public void move(Permeshalka p) {
+        model.moveHero(p);
+        view.update();
     }
 }

@@ -1,13 +1,14 @@
 package object;
 
 import model.Model;
+import model.Permeshalka;
 
 import java.awt.*;
 
 /**
  * Created by DiX on 13.06.2017.
  */
-public class ArcherChar extends Pers implements HeroInt {
+public class ArcherChar extends Heroes{
 
     public ArcherChar(String name, boolean pol) {
         setName(name);
@@ -32,11 +33,6 @@ public class ArcherChar extends Pers implements HeroInt {
 
     @Override
     public void die() {
-
-    }
-
-    @Override
-    public void move() {
 
     }
 

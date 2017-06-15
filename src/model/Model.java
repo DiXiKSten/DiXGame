@@ -68,7 +68,7 @@ public class Model {
                         }
                 }
             }
-        }
+        }//kk
     }
 
     public void chooseHero(){

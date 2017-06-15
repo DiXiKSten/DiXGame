@@ -2,7 +2,7 @@ package view;
 
 import controller.EventListener;
 import model.Permeshalka;
-import object.Pers;
+import personages.Pers;
 
 import javax.swing.*;
 

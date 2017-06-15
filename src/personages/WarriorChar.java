@@ -1,7 +1,6 @@
-package object;
+package personages;
 
 import model.Model;
-import model.Permeshalka;
 
 import java.awt.*;
 

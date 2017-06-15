@@ -1,4 +1,4 @@
-package object;
+package personages;
 
 import model.Permeshalka;
 

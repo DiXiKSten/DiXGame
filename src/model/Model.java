@@ -1,13 +1,9 @@
 package model;
 
-import controller.Controller;
 import controller.EventListener;
-import object.*;
+import personages.*;
 
 import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
 
 /**
  * Created by DiX on 13.06.2017.

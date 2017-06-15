@@ -2,7 +2,7 @@ package view;
 
 import controller.Controller;
 import controller.EventListener;
-import object.Pers;
+import personages.Pers;
 
 import javax.swing.*;
 import java.awt.*;

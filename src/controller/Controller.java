@@ -2,7 +2,7 @@ package controller;
 
 import model.Model;
 import model.Permeshalka;
-import object.Pers;
+import personages.Pers;
 import view.View;
 
 import java.util.ArrayList;

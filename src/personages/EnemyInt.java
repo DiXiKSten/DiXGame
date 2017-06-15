@@ -1,4 +1,4 @@
-package object;
+package personages;
 
 /**
  * Created by DiX on 13.06.2017.

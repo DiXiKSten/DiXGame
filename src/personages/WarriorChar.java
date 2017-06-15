@@ -28,7 +28,7 @@ public class WarriorChar extends Heroes {
 
     @Override
     public void defence() {
-
+        // защита
     }
 
     @Override

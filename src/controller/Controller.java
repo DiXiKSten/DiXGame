@@ -48,4 +48,11 @@ public class Controller implements EventListener{
         model.moveHero(p);
         view.update();
     }
+    public int getMaxX(){
+        return view.getWidth();
+    }
+    public int getMaxY(){
+        return view.getHeight();
+    }
+
 }

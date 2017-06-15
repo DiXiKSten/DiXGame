@@ -23,7 +23,7 @@ public class WarriorChar extends Heroes {
 
     @Override
     public void attack() {
-
+//hjhfhf;
     }
 
     @Override

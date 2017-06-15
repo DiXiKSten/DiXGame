@@ -18,14 +18,14 @@ public class View extends JFrame {
 
     private GameLvl gameLvl;
     private Controller controller;
-    String clas = "";
-    String nam = "";
+    String clas="";
+    String nam="";
 
-    public View(Controller controller) {
-        this.controller = controller;
+    public View(Controller controller){
+        this.controller=controller;
     }
 
-    public void update() {
+    public void update(){
         gameLvl.repaint();
     }
 
@@ -49,7 +49,7 @@ public class View extends JFrame {
         return 1000;
     }
 
-    public String[] chooseHero() {
+    public String[] chooseHero(){
 
         JFrame frame = new JFrame("Выбор героя");
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -59,13 +59,13 @@ public class View extends JFrame {
         frame.setLayout(new BorderLayout());
 
         JTextField textField = new JTextField("");
-        textField.setMinimumSize(new Dimension(100, 60));
-        frame.add(textField, BorderLayout.SOUTH);
+        textField.setMinimumSize(new Dimension(100,60));
+        frame.add(textField,BorderLayout.SOUTH);
 
         JLabel label = new JLabel("                                                                                                                 " +
                 "Введитие ваше имя и выберите класс");
-        label.setMinimumSize(new Dimension(100, 60));
-        frame.add(label, BorderLayout.NORTH);
+        label.setMinimumSize(new Dimension(100,60));
+        frame.add(label,BorderLayout.NORTH);
 
         JButton buttonWar = new JButton(" Воин ");
         buttonWar.setBackground(Color.PINK);
@@ -74,7 +74,7 @@ public class View extends JFrame {
         buttonWar.setIcon(icon1);
         buttonWar.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                clas = "var";
+                clas="var";
                 nam = textField.getText();
             }
         });
@@ -85,7 +85,7 @@ public class View extends JFrame {
         buttonMag.setIcon(icon2);
         buttonMag.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                clas = "mag";
+                clas="mag";
                 nam = textField.getText();
             }
         });
@@ -96,15 +96,15 @@ public class View extends JFrame {
         buttonArch.setIcon(icon3);
         buttonArch.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                clas = "luk";
+                clas="luk";
                 nam = textField.getText();
             }
         });
-        frame.add(buttonWar, BorderLayout.LINE_START);
-        frame.add(buttonMag, BorderLayout.CENTER);
-        frame.add(buttonArch, BorderLayout.LINE_END);
+        frame.add(buttonWar,BorderLayout.LINE_START);
+        frame.add(buttonMag,BorderLayout.CENTER);
+        frame.add(buttonArch,BorderLayout.LINE_END);
         frame.setVisible(true);
-        while (clas.equals("")) {
+        while (clas.equals("")){
             try {
                 Thread.sleep(50);
             } catch (InterruptedException e) {
@@ -112,19 +112,15 @@ public class View extends JFrame {
             }
         }
         frame.setVisible(false);
-        String[] st = {clas, nam};
+        String[] st = {clas,nam};
         return st;
     }
 
-    public ArrayList<Pers> getAllPers() {
-        return controller.getAllPers();
-    }
-
-    public ArrayList<GameObjects> getAllGameObjects() {
+    public ArrayList<GameObjects> getAllGameObjects(){
         return controller.getGameObjects();
     }
 
-    public void setEventListener(EventListener eventListener) {
+    public void setEventListener(EventListener eventListener){
         gameLvl.setEventListener(eventListener);
     }
 

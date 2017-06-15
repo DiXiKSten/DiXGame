@@ -9,6 +9,12 @@ import model.Permeshalka;
 public abstract class Heroes extends Pers implements HeroInt{
 
     @Override
+    public void attack(Pers gameObjects) {
+        gameObjects.setHelths(gameObjects.getHelths()-this.getAttackPower());
+        System.out.println(this.getName()+" ударил "+ gameObjects.getName() +" на "+this.getAttackPower());
+    }
+
+    @Override
     public int getWeight() {
         return 50;
     }

@@ -36,6 +36,8 @@ public class GameLvl extends JPanel {
                 case (KeyEvent.VK_DOWN):
                     eventListener.move(Permeshalka.DOWN);
                     break;
+                case (KeyEvent.VK_SPACE):
+                    eventListener.heroAttack();
             }
         }
     }

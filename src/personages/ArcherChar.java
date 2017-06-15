@@ -1,6 +1,7 @@
 package personages;
 
 import model.Model;
+import objects.GameObjects;
 
 import javax.swing.*;
 import java.awt.*;
@@ -19,11 +20,6 @@ public class ArcherChar extends Heroes{
         setSpellPower(0);
         setX(Model.FIELD_POSITION);
         setY(Model.FIELD_POSITION);
-    }
-
-    @Override
-    public void attack() {
-
     }
 
     @Override

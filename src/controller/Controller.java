@@ -28,9 +28,6 @@ public class Controller implements EventListener{
 
     }
 
-    public ArrayList<Pers> getAllPers(){
-        return model.getAllPers();
-    }
 
     public ArrayList<GameObjects> getGameObjects(){
         return model.getListObjects();
@@ -41,6 +38,12 @@ public class Controller implements EventListener{
         if (s[1].equals(""))s[1]="New Player";
         return s;
 
+    }
+
+    @Override
+    public void heroAttack() {
+        model.heroAttack();
+        view.update();
     }
 
     @Override

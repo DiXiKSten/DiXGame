@@ -17,7 +17,7 @@ public class Model {
     public final static int FIELD_POSITION = 150;
     public final static int PEREMESHALKA = 5;
     private Heroes heroes;
-    private ArrayList<Pers> listPers =new ArrayList<>();
+    private ArrayList<EnemyChar> listEnemy =new ArrayList<>();
     private ArrayList<GameObjects> listObjects=new ArrayList<>();
     private ArrayList<Walls> listWalls = new ArrayList<>();
 
@@ -41,7 +41,7 @@ public class Model {
         listWalls.add(new Walls(750,400));
         listWalls.add(new Walls(750,450));
 
-        listPers.add(new Ork(850,850));
+        listEnemy.add(new Ork(850,850));
 
     }
 
@@ -85,12 +85,9 @@ public class Model {
                 heroes=new ArcherChar(s[1],true);
                 break;
         }
-        listPers.add(heroes);
+        listObjects.add(heroes);
     }
 
-    public ArrayList<Pers> getListPers() {
-        return listPers;
-    }
 
     public ArrayList<GameObjects> getListObjects() {
         if (listWalls.size()>0) {
@@ -100,8 +97,8 @@ public class Model {
                 }
             }
         }
-        if (listPers.size()>0) {
-            for (Pers w : listPers) {
+        if (listEnemy.size()>0) {
+            for (EnemyChar w : listEnemy) {
                 if (!listObjects.contains(w)) {
                     listObjects.add(w);
                 }
@@ -110,15 +107,29 @@ public class Model {
         return listObjects;
     }
 
-    public void setListPers(ArrayList<Pers> listPers) {
-        this.listPers = listPers;
-    }
-
-    public ArrayList<Pers> getAllPers() {
-        return getListPers();
-    }
 
     public void setEventListener(EventListener eventListener) {
         this.eventListener  = eventListener;
+    }
+
+    public void heroAttack() {
+        EnemyChar enemyChars=null;
+        for (EnemyChar enemyChar:listEnemy){
+            int dx = heroes.getX() - enemyChar.getX();
+            int dy = heroes.getY() - enemyChar.getY();
+            int sumRad = (heroes.getHight() / 2) + (enemyChar.getHight() / 2)+10;
+            Double d = Math.sqrt((dx * dx) + (dy * dy));
+            if (d<sumRad){
+                heroes.attack(enemyChar);
+                if (enemyChar.getHelths()<=0){
+                    enemyChars=enemyChar;
+                    break;
+                }
+            }
+        }
+        if (enemyChars!=null){
+            listEnemy.remove(enemyChars);
+            listObjects.remove(enemyChars);
+        }
     }
 }

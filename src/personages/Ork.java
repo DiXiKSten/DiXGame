@@ -1,5 +1,7 @@
 package personages;
 
+import objects.GameObjects;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -20,8 +22,8 @@ public class Ork extends EnemyChar {
     }
 
     @Override
-    public void attack() {
-
+    public void attack(Pers gameObjects) {
+        gameObjects.setHelths(gameObjects.getHelths()-this.getAttackPower());
     }
 
     @Override
@@ -41,5 +43,6 @@ public class Ork extends EnemyChar {
         graphics.drawImage(im,getX()-getWeight()/2,getY()-getHight()/2,null);
         graphics.setColor(Color.RED);
         graphics.drawString(getName(),getX(),getY()-getHight()/2);
+        graphics.drawString(String.valueOf(getHelths()),getX(),getY()-getHight()/2-15);
     }
 }

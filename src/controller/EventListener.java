@@ -8,4 +8,6 @@ import model.Permeshalka;
 public interface EventListener {
     void move(Permeshalka p);
     String[] getChoose();
+    int getMaxX();
+    int getMaxY();
 }

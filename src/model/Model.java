@@ -1,5 +1,6 @@
 package model;
 
+import controller.Controller;
 import controller.EventListener;
 import objects.GameObjects;
 import objects.Walls;
@@ -50,19 +51,19 @@ public class Model {
             if (!obj.equals(heroes)) {
                 switch (p) {
                     case UP:
-                        if (obj.collision(heroes)) {
+                        if (obj.collision(heroes)||heroes.getY()<=0+heroes.getHight()/2) {
                             heroes.move(Permeshalka.DOWN);
                         }
                     case DOWN:
-                        if (obj.collision(heroes)) {
+                        if (obj.collision(heroes)||heroes.getY()>=eventListener.getMaxY()-heroes.getHight()/2) {
                             heroes.move(Permeshalka.UP);
                         }
                     case RIGHT:
-                        if (obj.collision(heroes)) {
+                        if (obj.collision(heroes)||heroes.getX()>=eventListener.getMaxX()-heroes.getWeight()/2) {
                             heroes.move(Permeshalka.LEFT);
                         }
                     case LEFT:
-                        if (obj.collision(heroes)) {
+                        if (obj.collision(heroes)||heroes.getX()<=0+heroes.getWeight()/2) {
                             heroes.move(Permeshalka.RIGHT);
                         }
                 }

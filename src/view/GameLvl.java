@@ -52,7 +52,7 @@ public class GameLvl extends JPanel {
 
     @Override
     public void paint(Graphics g) {
-        g.setColor(Color.LIGHT_GRAY);
+        g.setColor(Color.WHITE);
         g.fillRect(0,0,view.getWidth(),view.getHeight());
         ArrayList<Pers> set1 = view.getAllPers();
 

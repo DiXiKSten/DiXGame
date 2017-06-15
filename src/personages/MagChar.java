@@ -2,6 +2,7 @@ package personages;
 
 import model.Model;
 
+import javax.swing.*;
 import java.awt.*;
 
 /**
@@ -57,9 +58,10 @@ public class MagChar extends Heroes {
 
     @Override
     public void show(Graphics graphics) {
-        graphics.setColor(Color.cyan);
-        graphics.fillOval(getX()-(getWeight()/2),getY()-(getHight()/2),getHight(),getWeight());
-        graphics.setColor(Color.BLACK);
-        graphics.drawString(getName(),getX()-28,getY()+07);
+        ImageIcon icon1 = new ImageIcon("images/magModel.png");
+        Image im = icon1.getImage();
+        graphics.drawImage(im,getX()-getWeight()/2,getY()-getHight()/2,null);
+        graphics.setColor(Color.RED);
+        graphics.drawString(getName(),getX()-getWeight()/3,getY()-getHight()/2);
     }
 }

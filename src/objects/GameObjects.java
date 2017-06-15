@@ -50,4 +50,13 @@ public abstract class GameObjects {
     public void setColor(Color color) {
         this.color = color;
     }
+
+    public boolean collision(GameObjects o) {
+        int dx = o.getX() - this.getX();
+        int dy = o.getY() - this.getY();
+        int sumRad = (this.getHight() / 2) + (o.getHight() / 2);
+        Double d = Math.sqrt((dx * dx) + (dy * dy));
+        return d < sumRad;
+    }
+
 }

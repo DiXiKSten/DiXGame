@@ -26,12 +26,4 @@ public class Walls extends GameObjects implements objectsEnvironment {
 
     }
 
-    @Override
-    public boolean collision(GameObjects o) {
-        int dx = o.getX()-this.getX();
-        int dy = o.getY()-this.getY();
-        int sumRad = (this.getHight()/2)+(o.getHight()/2);
-        Double d = Math.sqrt((dx*dx)+(dy*dy));
-        return d<sumRad;
-    }
 }

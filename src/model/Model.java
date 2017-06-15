@@ -39,23 +39,32 @@ public class Model {
         listWalls.add(new Walls(700,450));
         listWalls.add(new Walls(750,400));
         listWalls.add(new Walls(750,450));
+
+        listPers.add(new Ork(850,850));
+
     }
 
     public void moveHero(Permeshalka p){
         heroes.move(p);
-        for (Walls obj:listWalls){
-            switch (p){
-                case UP: if (obj.collision(heroes)){
-                    heroes.move(Permeshalka.DOWN);
-                }
-                case DOWN: if (obj.collision(heroes)){
-                    heroes.move(Permeshalka.UP);
-                }
-                case RIGHT: if (obj.collision(heroes)){
-                    heroes.move(Permeshalka.LEFT);
-                }
-                case LEFT: if (obj.collision(heroes)){
-                    heroes.move(Permeshalka.RIGHT);
+        for (GameObjects obj:listObjects){
+            if (!obj.equals(heroes)) {
+                switch (p) {
+                    case UP:
+                        if (obj.collision(heroes)) {
+                            heroes.move(Permeshalka.DOWN);
+                        }
+                    case DOWN:
+                        if (obj.collision(heroes)) {
+                            heroes.move(Permeshalka.UP);
+                        }
+                    case RIGHT:
+                        if (obj.collision(heroes)) {
+                            heroes.move(Permeshalka.LEFT);
+                        }
+                    case LEFT:
+                        if (obj.collision(heroes)) {
+                            heroes.move(Permeshalka.RIGHT);
+                        }
                 }
             }
         }
@@ -85,6 +94,13 @@ public class Model {
     public ArrayList<GameObjects> getListObjects() {
         if (listWalls.size()>0) {
             for (Walls w : listWalls) {
+                if (!listObjects.contains(w)) {
+                    listObjects.add(w);
+                }
+            }
+        }
+        if (listPers.size()>0) {
+            for (Pers w : listPers) {
                 if (!listObjects.contains(w)) {
                     listObjects.add(w);
                 }

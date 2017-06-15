@@ -15,6 +15,7 @@ public abstract class Pers extends GameObjects{
     private int attackPower;
     private int spellPower;
     public final static int stackHP = 20;
+    public final static int stackHPMonster = 40;
     public final static int stackAP = 10;
     public final static int stackSP = 10;
 

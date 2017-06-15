@@ -10,4 +10,8 @@ public interface EventListener {
     String[] getChoose();
 
     void heroAttack();
+
+    int getMaxY();
+
+    int getMaxX();
 }

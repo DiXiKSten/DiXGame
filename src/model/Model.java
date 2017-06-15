@@ -13,7 +13,7 @@ import java.util.ArrayList;
 public class Model {
     private EventListener eventListener;
 
-    public final static int FIELD_POSITION = 300;
+    public final static int FIELD_POSITION = 150;
     public final static int PEREMESHALKA = 5;
     private Heroes heroes;
     private ArrayList<Pers> listPers =new ArrayList<>();
@@ -22,10 +22,23 @@ public class Model {
 
     public void start(){
         chooseHero();
-        listWalls.add(new Walls(100,100));
-        listWalls.add(new Walls(500,500));
-        listWalls.add(new Walls(500,550));
-        listWalls.add(new Walls(500,600));
+        for (int i = 100;i<1000;i=i+50) {
+            listWalls.add(new Walls(i, 100));
+        }
+
+        for (int i = 100;i<1000;i=i+50) {
+            listWalls.add(new Walls(i, 250));
+            if (i==500)i=i+100;
+        }
+        for (int i = 250;i<800;i=i+50) {
+            listWalls.add(new Walls(500, i));
+
+        }
+
+        listWalls.add(new Walls(700,400));
+        listWalls.add(new Walls(700,450));
+        listWalls.add(new Walls(750,400));
+        listWalls.add(new Walls(750,450));
     }
 
     public void moveHero(Permeshalka p){

@@ -9,7 +9,7 @@ import java.awt.*;
  * Created by DiX on 13.06.2017.
  */
 public class WarriorChar extends Heroes {
-//hjghjtghdfgdgf
+//hjghjtghdfgdgfkhljkh
     public WarriorChar(String name, boolean pol) {
         setName(name);
         setPol(pol);

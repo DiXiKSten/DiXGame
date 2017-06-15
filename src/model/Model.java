@@ -1,6 +1,8 @@
 package model;
 
 import controller.EventListener;
+import objects.GameObjects;
+import objects.Walls;
 import personages.*;
 
 import java.util.ArrayList;
@@ -14,11 +16,16 @@ public class Model {
     public final static int FIELD_POSITION = 300;
     public final static int PEREMESHALKA = 5;
     private Heroes heroes;
-    private ArrayList<Pers> list=new ArrayList<>();
+    private ArrayList<Pers> listPers =new ArrayList<>();
+    private ArrayList<GameObjects> listObjects=new ArrayList<>();
+    private ArrayList<Walls> listWalls = new ArrayList<>();
 
     public void start(){
         chooseHero();
-        list.add(heroes);
+        listWalls.add(new Walls(100,100));
+        listWalls.add(new Walls(500,500));
+        listWalls.add(new Walls(500,550));
+        listWalls.add(new Walls(500,600));
     }
 
     public void moveHero(Permeshalka p){
@@ -39,23 +46,30 @@ public class Model {
                 heroes=new ArcherChar(s[1],true);
                 break;
         }
-        list.add(heroes);
+        listPers.add(heroes);
     }
 
-    public Heroes getHeroes() {
-        return heroes;
+    public ArrayList<Pers> getListPers() {
+        return listPers;
     }
 
-    public ArrayList<Pers> getList() {
-        return list;
+    public ArrayList<GameObjects> getListObjects() {
+        if (listWalls.size()>0) {
+            for (Walls w : listWalls) {
+                if (!listObjects.contains(w)) {
+                    listObjects.add(w);
+                }
+            }
+        }
+        return listObjects;
     }
 
-    public void setList(ArrayList<Pers> list) {
-        this.list = list;
+    public void setListPers(ArrayList<Pers> listPers) {
+        this.listPers = listPers;
     }
 
     public ArrayList<Pers> getAllPers() {
-        return getList();
+        return getListPers();
     }
 
     public void setEventListener(EventListener eventListener) {

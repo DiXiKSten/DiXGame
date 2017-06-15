@@ -2,6 +2,7 @@ package view;
 
 import controller.Controller;
 import controller.EventListener;
+import objects.GameObjects;
 import personages.Pers;
 
 import javax.swing.*;
@@ -17,7 +18,6 @@ public class View extends JFrame {
 
     private GameLvl gameLvl;
     private Controller controller;
-    private ArrayList<Pers> set;
     String clas="";
     String nam="";
 
@@ -37,7 +37,7 @@ public class View extends JFrame {
         gameLvl = new GameLvl(this);
         add(gameLvl);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        setSize(900, 900);
+        setSize(1000, 1000);
         setLocationRelativeTo(null);
         setTitle("Супер игрушка");
         setVisible(true);
@@ -111,7 +111,11 @@ public class View extends JFrame {
     }
 
     public ArrayList<Pers> getAllPers(){
-        return controller.getPers();
+        return controller.getAllPers();
+    }
+
+    public ArrayList<GameObjects> getAllGameObjects(){
+        return controller.getGameObjects();
     }
 
     public void setEventListener(EventListener eventListener){

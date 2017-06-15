@@ -2,6 +2,7 @@ package controller;
 
 import model.Model;
 import model.Permeshalka;
+import objects.GameObjects;
 import personages.Pers;
 import view.View;
 
@@ -27,14 +28,19 @@ public class Controller implements EventListener{
 
     }
 
-    public ArrayList<Pers> getPers(){
+    public ArrayList<Pers> getAllPers(){
         return model.getAllPers();
+    }
+
+    public ArrayList<GameObjects> getGameObjects(){
+        return model.getListObjects();
     }
 
     public String[] getChoose(){
         String[] s = view.chooseHero();
         if (s[1].equals(""))s[1]="New Player";
         return s;
+
     }
 
     @Override

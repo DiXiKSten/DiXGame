@@ -7,6 +7,7 @@ import model.Permeshalka;
  * Created by DiX on 14.06.2017.
  */
 public abstract class Heroes extends Pers implements HeroInt{
+    final int heroRadius = 50;
     @Override
     public void move(Permeshalka p) {
         switch (p) {

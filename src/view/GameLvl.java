@@ -2,6 +2,7 @@ package view;
 
 import controller.EventListener;
 import model.Permeshalka;
+import objects.GameObjects;
 import personages.Pers;
 
 import javax.swing.*;
@@ -53,10 +54,17 @@ public class GameLvl extends JPanel {
     public void paint(Graphics g) {
         g.setColor(Color.LIGHT_GRAY);
         g.fillRect(0,0,view.getWidth(),view.getHeight());
-        ArrayList<Pers> set = view.getAllPers();
-        System.out.println(set.size());
-        for (Pers p:set){
+        ArrayList<Pers> set1 = view.getAllPers();
+
+        for (Pers p:set1){
             p.show(g);
         }
+
+        ArrayList<GameObjects> set2 = view.getAllGameObjects();
+
+        for (GameObjects p:set2){
+            p.show(g);
+        }
+        System.out.println("обновлено");
     }
 }

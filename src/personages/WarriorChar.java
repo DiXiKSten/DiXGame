@@ -58,7 +58,7 @@ public class WarriorChar extends Heroes {
     @Override
     public void show(Graphics graphics) {
         graphics.setColor(Color.PINK);
-        graphics.fillOval(getX() - (heroRadius/2), getY() - (heroRadius/2), heroRadius, heroRadius);
+        graphics.fillOval(getX() - (getWeight()/2), getY() - (getHight()/2), getWeight(), getHight());
         graphics.setColor(Color.BLACK);
         graphics.drawString(getName(), getX() - 28, getY() + 07);
     }

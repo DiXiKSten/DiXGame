@@ -1,11 +1,13 @@
 package personages;
 
+import objects.GameObjects;
+
 import java.awt.*;
 
 /**
  * Created by DiX on 13.06.2017.
  */
-public abstract class Pers {
+public abstract class Pers extends GameObjects{
     private String name;
     private boolean pol;
     private int lvl;
@@ -15,25 +17,6 @@ public abstract class Pers {
     public final static int stackHP = 20;
     public final static int stackAP = 10;
     public final static int stackSP = 10;
-
-    private int x;
-    private int y;
-
-    public int getX() {
-        return x;
-    }
-
-    public void setX(int x) {
-        this.x = x;
-    }
-
-    public int getY() {
-        return y;
-    }
-
-    public void setY(int y) {
-        this.y = y;
-    }
 
     public abstract void show(Graphics graphics);
 

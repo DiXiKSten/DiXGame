@@ -30,6 +30,22 @@ public class Model {
 
     public void moveHero(Permeshalka p){
         heroes.move(p);
+        for (Walls obj:listWalls){
+            switch (p){
+                case UP: if (obj.collision(heroes)){
+                    heroes.move(Permeshalka.DOWN);
+                }
+                case DOWN: if (obj.collision(heroes)){
+                    heroes.move(Permeshalka.UP);
+                }
+                case RIGHT: if (obj.collision(heroes)){
+                    heroes.move(Permeshalka.LEFT);
+                }
+                case LEFT: if (obj.collision(heroes)){
+                    heroes.move(Permeshalka.RIGHT);
+                }
+            }
+        }
     }
 
     public void chooseHero(){

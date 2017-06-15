@@ -7,5 +7,5 @@ import java.awt.*;
  */
 public interface objectsEnvironment {
     void destroy();
-    void collision(Object o);
+    boolean collision(GameObjects o);
 }

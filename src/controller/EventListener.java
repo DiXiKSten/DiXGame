@@ -14,4 +14,6 @@ public interface EventListener {
     int getMaxY();
 
     int getMaxX();
+
+    void heroRest();
 }

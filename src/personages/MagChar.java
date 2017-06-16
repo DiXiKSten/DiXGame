@@ -16,9 +16,11 @@ public class MagChar extends Heroes {
         setPol(pol);
         setLvl(1);
         setHelths(stackHP);
+        setMaxHelth(getHelths());
+        setRest(false);
         setAttackPower((int) (stackAP*0.8));
         setSpellPower(stackSP);
-        setX(Model.FIELD_POSITION);
+        setX(Model.FIELD_POSITION/2);
         setY(Model.FIELD_POSITION);
     }
 
@@ -43,11 +45,6 @@ public class MagChar extends Heroes {
     }
 
     @Override
-    public void sleep() {
-
-    }
-
-    @Override
     public void lvlUp() {
 
     }
@@ -59,5 +56,12 @@ public class MagChar extends Heroes {
         graphics.drawImage(im,getX()-getWeight()/2,getY()-getHight()/2,null);
         graphics.setColor(Color.RED);
         graphics.drawString(getName(),getX()-getWeight()/3,getY()-getHight()/2);
+        graphics.drawString(String.valueOf(getHelths()),getX(),getY()-getHight()/2-15);
+        if (!getMesage().equals("")) {
+            graphics.setColor(Color.BLUE);
+            graphics.drawRoundRect(getX() - getWeight() * 2-5,getY() - getHight() - 30,230,30,200,20);
+            graphics.drawString(getMesage(), getX() - getWeight() * 2, getY() - getHight() / 2 - 35);
+            setMesage("");
+        }
     }
 }

@@ -14,7 +14,7 @@ import java.util.ArrayList;
 public class Model {
     private EventListener eventListener;
 
-    public final static int FIELD_POSITION = 150;
+    public final static int FIELD_POSITION = 200;
     public final static int PEREMESHALKA = 5;
     private Heroes heroes;
     private ArrayList<EnemyChar> listEnemy =new ArrayList<>();
@@ -23,11 +23,11 @@ public class Model {
 
     public void start(){
         chooseHero();
-        for (int i = 100;i<1000;i=i+50) {
-            listWalls.add(new Walls(i, 100));
+        for (int i = 50;i<1000;i=i+50) {
+            listWalls.add(new Walls(i, 80));
         }
 
-        for (int i = 100;i<1000;i=i+50) {
+        for (int i = 50;i<1000;i=i+50) {
             listWalls.add(new Walls(i, 250));
             if (i==500)i=i+100;
         }
@@ -42,6 +42,7 @@ public class Model {
         listWalls.add(new Walls(750,450));
 
         listEnemy.add(new Ork(850,850));
+        listEnemy.add(new Ork(850,170));
 
     }
 
@@ -125,11 +126,23 @@ public class Model {
                     enemyChars=enemyChar;
                     break;
                 }
+                else enemyChar.attack(heroes);
             }
         }
         if (enemyChars!=null){
             listEnemy.remove(enemyChars);
             listObjects.remove(enemyChars);
         }
+    }
+
+    public void heroRest() {
+        if (listEnemy.size()>0){
+            heroes.setMesage("НЕ ВРЕМЯ ОТДЫХАТЬ, КРУГОМ ВРАГИ");
+        }
+        else heroes.setRest(true);
+    }
+
+    public Heroes getHeroes() {
+        return heroes;
     }
 }

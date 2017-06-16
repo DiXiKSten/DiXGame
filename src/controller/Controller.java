@@ -3,6 +3,7 @@ package controller;
 import model.Model;
 import model.Permeshalka;
 import objects.GameObjects;
+import personages.Heroes;
 import personages.Pers;
 import view.View;
 
@@ -33,6 +34,10 @@ public class Controller implements EventListener{
         return model.getListObjects();
     }
 
+    public Heroes getHero(){
+        return model.getHeroes();
+    }
+
     public String[] getChoose(){
         String[] s = view.chooseHero();
         if (s[1].equals(""))s[1]="New Player";
@@ -54,6 +59,13 @@ public class Controller implements EventListener{
     public int getMaxX(){
         return view.getWidth();
     }
+
+    @Override
+    public void heroRest() {
+        model.heroRest();
+        view.update();
+    }
+
     public int getMaxY(){
         return view.getHeight();
     }

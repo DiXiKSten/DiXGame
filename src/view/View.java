@@ -3,6 +3,7 @@ package view;
 import controller.Controller;
 import controller.EventListener;
 import objects.GameObjects;
+import personages.Heroes;
 import personages.Pers;
 
 import javax.swing.*;
@@ -122,6 +123,10 @@ public class View extends JFrame {
 
     public void setEventListener(EventListener eventListener){
         gameLvl.setEventListener(eventListener);
+    }
+
+    public Heroes getHero(){
+        return controller.getHero();
     }
 
 }

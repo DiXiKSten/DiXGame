@@ -3,7 +3,7 @@ package view;
 import controller.EventListener;
 import model.Permeshalka;
 import objects.GameObjects;
-import personages.Pers;
+import personages.Heroes;
 
 import javax.swing.*;
 
@@ -38,6 +38,10 @@ public class GameLvl extends JPanel {
                     break;
                 case (KeyEvent.VK_SPACE):
                     eventListener.heroAttack();
+                   break;
+                case (KeyEvent.VK_R):
+                    eventListener.heroRest();
+                    break;
             }
         }
     }
@@ -54,13 +58,20 @@ public class GameLvl extends JPanel {
 
     @Override
     public void paint(Graphics g) {
-        g.setColor(Color.GRAY);
+        g.setColor(Color.WHITE);
         g.fillRect(0,0,1000,1000);
 
-        ArrayList<GameObjects> set2 = view.getAllGameObjects();
-
-        for (GameObjects p:set2){
-            p.show(g);
+        Heroes heroes = view.getHero();
+        if (heroes!=null) {
+            if (heroes.isRest() == true) {
+                heroes.sleep(g);
+            }
+            else {
+                ArrayList<GameObjects> set2 = view.getAllGameObjects();
+                for (GameObjects p : set2) {
+                    p.show(g);
+                }
+            }
         }
         System.out.println("обновлено");
     }

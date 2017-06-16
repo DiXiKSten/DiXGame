@@ -3,15 +3,36 @@ package personages;
 import model.Model;
 import model.Permeshalka;
 
+import javax.swing.*;
+import java.awt.*;
+
 /**
  * Created by DiX on 14.06.2017.
  */
 public abstract class Heroes extends Pers implements HeroInt{
 
+    private boolean rest;
+
+    public boolean isRest() {
+        return rest;
+    }
+
+    public void setRest(boolean rest) {
+        this.rest = rest;
+    }
+
     @Override
     public void attack(Pers gameObjects) {
         gameObjects.setHelths(gameObjects.getHelths()-this.getAttackPower());
-        System.out.println(this.getName()+" ударил "+ gameObjects.getName() +" на "+this.getAttackPower());
+    }
+
+    @Override
+    public void sleep(Graphics g) {
+        setHelths(getMaxHelth());
+        setRest(false);
+        ImageIcon icon1 = new ImageIcon("images/otdih.png");
+        Image im = icon1.getImage();
+        g.drawImage(im,1,1,null);
     }
 
     @Override

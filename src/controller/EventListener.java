@@ -16,4 +16,8 @@ public interface EventListener {
     int getMaxX();
 
     void heroRest();
+
+    void gameOver();
+
+    void startGame();
 }

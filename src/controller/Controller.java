@@ -66,6 +66,17 @@ public class Controller implements EventListener{
         view.update();
     }
 
+    @Override
+    public void gameOver() {
+        view.gameOver();
+    }
+
+    @Override
+    public void startGame() {
+        model.restartGame();
+        view.update();
+    }
+
     public int getMaxY(){
         return view.getHeight();
     }

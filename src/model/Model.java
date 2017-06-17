@@ -42,7 +42,7 @@ public class Model {
         listWalls.add(new Walls(750,450));
 
         listEnemy.add(new Ork(850,850));
-        listEnemy.add(new Ork(850,170));
+        listEnemy.add(new Ork(250,170));
 
     }
 
@@ -133,6 +133,9 @@ public class Model {
             listEnemy.remove(enemyChars);
             listObjects.remove(enemyChars);
         }
+        if (heroes.getHelths()<=0){
+            gameOver();
+        }
     }
 
     public void heroRest() {
@@ -144,5 +147,21 @@ public class Model {
 
     public Heroes getHeroes() {
         return heroes;
+    }
+
+    public void gameOver(){
+        eventListener.gameOver();
+    }
+
+    public void restartGame(){
+        heroes=null;
+        System.out.println("герой удален");
+        listEnemy=new ArrayList<>();
+        System.out.println("враги удалены");
+        listObjects=new ArrayList<>();
+        System.out.println("все очищено");
+        listWalls = new ArrayList<>();
+        System.out.println("даже стены");
+        start();
     }
 }

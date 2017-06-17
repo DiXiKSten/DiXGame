@@ -10,6 +10,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.ArrayList;
 
 /**
@@ -129,4 +131,67 @@ public class View extends JFrame {
         return controller.getHero();
     }
 
+    public void gameOver() {
+        JFrame frameDead = new JFrame();
+        frameDead.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        frameDead.setSize(1000, 1000);
+        frameDead.setLocationRelativeTo(null);
+        frameDead.setTitle("Конец игры");
+        frameDead.setBackground(Color.BLACK);
+        frameDead.setLayout(new BorderLayout());
+
+        JLabel labelDead = new JLabel("           " +
+                "Как так то КАРЛ, ты умер....");
+        labelDead.setBackground(Color.BLACK);
+        labelDead.setFont(new Font("Verdana", Font.BOLD, 40));
+        frameDead.add(labelDead,BorderLayout.NORTH);
+
+        JLabel labelDead2 = new JLabel();
+        labelDead2.setBackground(Color.BLACK);
+        ImageIcon icon1 = new ImageIcon("images/dead.png");
+        labelDead2.setIcon(icon1);
+        labelDead2.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                frameDead.setVisible(false);
+                controller.startGame();
+
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+                frameDead.setVisible(false);
+                controller.startGame();
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                frameDead.setVisible(false);
+                controller.startGame();
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+            }
+        });
+
+        frameDead.add(labelDead2,BorderLayout.CENTER);
+
+        JLabel labelDeadFake = new JLabel("                                                                                                                      " +
+                "");
+        frameDead.add(labelDeadFake,BorderLayout.LINE_START);
+
+        JLabel labelDead3 = new JLabel("    Тыкай на ЧЕРЕП и начинай по новой!!");
+        labelDead3.setBackground(Color.WHITE);
+        labelDead3.setFont(new Font("Verdana", Font.BOLD, 40));
+        frameDead.add(labelDead3,BorderLayout.SOUTH);
+
+        frameDead.setVisible(true);
+
+
+    }
 }

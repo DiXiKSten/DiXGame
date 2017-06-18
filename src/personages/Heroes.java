@@ -42,8 +42,6 @@ public abstract class Heroes extends Pers implements HeroInt{
         }
     }
 
-
-
     @Override
     public void attack(Pers gameObjects) {
         gameObjects.setHelths(gameObjects.getHelths()-this.getAttackPower());

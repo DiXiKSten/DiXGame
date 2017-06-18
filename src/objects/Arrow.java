@@ -26,8 +26,8 @@ public class Arrow extends HeroShell {
 
 
     public Arrow(Pers pers,Pers pers2) {
-        setWeight(10);
-        setHight(10);
+        setWeight(15);
+        setHight(15);
         setGetterAttack(pers);
         setSetterAttack(pers2);
         setX(pers.getX()+20);
@@ -41,6 +41,6 @@ public class Arrow extends HeroShell {
     @Override
     public void show(Graphics g) {
         g.setColor(Color.GREEN);
-        g.fillOval(getX()-getWeight()/2,getY()-getHight()/2,getHight(),getWeight());
+        g.fillRect(getX()-getWeight()/2,getY()-getHight()/2,getWeight(),3);
     }
 }

@@ -167,6 +167,7 @@ public class Model {
             Double d = Math.sqrt((dx * dx) + (dy * dy));
             if (d<sumRad){
                 HeroShell shell = (HeroShell) heroes.rangeAkkack(heroes,enemyChar);
+                if (shell==null)break;
                 listShell.add(shell);
                 listObjects.add(shell);
                 if (enemyChar.getHelths()<=0){

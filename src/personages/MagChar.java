@@ -1,12 +1,15 @@
 package personages;
 
+import javazoom.jl.decoder.JavaLayerException;
 import model.Model;
 import objects.GameObjects;
 import objects.HeroShell;
 import objects.Spell;
+import view.Sound;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.FileNotFoundException;
 
 /**
  * Created by DiX on 13.06.2017.
@@ -30,6 +33,7 @@ public class MagChar extends Heroes {
     @Override
     public HeroShell rangeAkkack(Pers p1, Pers p2) {
         Spell arrow = new Spell(p1,p2);
+
         return arrow;
     }
 

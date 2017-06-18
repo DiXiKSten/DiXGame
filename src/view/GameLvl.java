@@ -1,6 +1,7 @@
 package view;
 
 import controller.EventListener;
+import javazoom.jl.decoder.JavaLayerException;
 import model.Permeshalka;
 import objects.GameObjects;
 import objects.HeroShell;
@@ -13,6 +14,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
 

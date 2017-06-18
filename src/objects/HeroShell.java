@@ -20,8 +20,8 @@ public abstract class HeroShell extends GameObjects{
     }
 
     protected void changPosition(){
-        int dx = (getSetterAttack().getX()-getGetterAttack().getX())/10;
-        int dy = (getSetterAttack().getY()-getGetterAttack().getY())/10;
+        int dx = (getSetterAttack().getX()-getGetterAttack().getX())/20;
+        int dy = (getSetterAttack().getY()-getGetterAttack().getY())/20;
         count++;
         setX(getX()+dx);
         setY(getY()+dy);

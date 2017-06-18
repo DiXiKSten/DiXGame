@@ -2,11 +2,14 @@ package model;
 
 import controller.Controller;
 import controller.EventListener;
+import javazoom.jl.decoder.JavaLayerException;
 import objects.GameObjects;
 import objects.HeroShell;
 import objects.Walls;
 import personages.*;
+import view.Sound;
 
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
 /**
@@ -183,10 +186,29 @@ public class Model {
     }
 
     public void heroRest() {
+        class RestSound extends Thread{
+            @Override
+            public void run() {
+                try {
+                    Sound sound = new Sound("sound/koster.wav");
+                    sound.play();
+                    System.out.println("все ок");
+
+                } catch (FileNotFoundException e1) {
+                    e1.printStackTrace();
+                } catch (JavaLayerException e1) {
+                    e1.printStackTrace();
+                }
+            }
+        }
         if (listEnemy.size()>0){
             heroes.setMesage("НЕ ВРЕМЯ ОТДЫХАТЬ, КРУГОМ ВРАГИ");
         }
-        else heroes.setRest(true);
+        else {
+            heroes.setRest(true);
+            RestSound restSound = new RestSound();
+            restSound.start();
+        }
     }
 
     public ArrayList<HeroShell> getListShell() {

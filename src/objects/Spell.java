@@ -1,8 +1,11 @@
 package objects;
 
+import javazoom.jl.decoder.JavaLayerException;
 import personages.Pers;
+import view.Sound;
 
 import java.awt.*;
+import java.io.FileNotFoundException;
 
 /**
  * Created by DiX on 18.06.2017.
@@ -12,7 +15,7 @@ public class Spell extends HeroShell {
     private class MoveSpell extends Thread{
         @Override
         public void run() {
-            while (count<11){
+            while (count<22){
                 try {
                     Thread.sleep(200);
                     changPosition();
@@ -21,6 +24,19 @@ public class Spell extends HeroShell {
                 }
             }
             setDestr(true);
+        }
+    }
+    private class SoundSpell extends Thread{
+        @Override
+        public void run() {
+            try {
+                Sound sound = new Sound("sound/fireball.wav");
+                sound.play();
+            } catch (FileNotFoundException e1) {
+                e1.printStackTrace();
+            } catch (JavaLayerException e1) {
+                e1.printStackTrace();
+            }
         }
     }
 
@@ -35,6 +51,8 @@ public class Spell extends HeroShell {
         MoveSpell moveArrow = new MoveSpell();
         setDestr(false);
         moveArrow.start();
+        SoundSpell soundSpell = new SoundSpell();
+        soundSpell.start();
     }
 
     @Override

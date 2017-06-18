@@ -1,10 +1,13 @@
 package personages;
 
+import javazoom.jl.decoder.JavaLayerException;
 import model.Model;
 import model.Permeshalka;
+import view.Sound;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.FileNotFoundException;
 
 /**
  * Created by DiX on 14.06.2017.
@@ -17,13 +20,35 @@ public abstract class Heroes extends Pers implements HeroInt{
         return rest;
     }
 
+
     public void setRest(boolean rest) {
+
         this.rest = rest;
     }
+
+    private class MeleUdarSound extends Thread{
+        @Override
+        public void run() {
+            try {
+                Sound sound = new Sound("sound/udarMele2.wav");
+                sound.play();
+                System.out.println("все ок");
+
+            } catch (FileNotFoundException e1) {
+                e1.printStackTrace();
+            } catch (JavaLayerException e1) {
+                e1.printStackTrace();
+            }
+        }
+    }
+
+
 
     @Override
     public void attack(Pers gameObjects) {
         gameObjects.setHelths(gameObjects.getHelths()-this.getAttackPower());
+        MeleUdarSound meleUdarSound = new MeleUdarSound();
+        meleUdarSound.start();
     }
 
     @Override

@@ -3,6 +3,7 @@ package controller;
 import model.Model;
 import model.Permeshalka;
 import objects.GameObjects;
+import objects.HeroShell;
 import personages.Heroes;
 import personages.Pers;
 import view.View;
@@ -15,6 +16,8 @@ import java.util.ArrayList;
  */
 public class Controller implements EventListener{
 
+    private boolean stop =false;
+
     private Model model;
     private View view;
 
@@ -26,7 +29,6 @@ public class Controller implements EventListener{
         view.setEventListener(this);
         model.start();
         view.update();
-
     }
 
 
@@ -38,6 +40,10 @@ public class Controller implements EventListener{
         return model.getHeroes();
     }
 
+    public ArrayList<HeroShell> getListShell(){
+        return model.getListShell();
+    }
+
     public String[] getChoose(){
         String[] s = view.chooseHero();
         if (s[1].equals(""))s[1]="New Player";
@@ -46,10 +52,33 @@ public class Controller implements EventListener{
     }
 
     @Override
+    public void stop() {
+        stop=true;
+    }
+
+    @Override
     public void heroAttack() {
         model.heroAttack();
         view.update();
     }
+
+    @Override
+    public void heroRangeAttack() {
+        model.heroRangeAttack();
+        view.update();
+    }
+
+    public boolean isStop() {
+        return stop;
+    }
+
+
+
+    @Override
+    public void upd() {
+        view.update();
+    }
+
 
     @Override
     public void move(Permeshalka p) {

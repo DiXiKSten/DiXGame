@@ -3,6 +3,7 @@ package model;
 import controller.Controller;
 import controller.EventListener;
 import objects.GameObjects;
+import objects.HeroShell;
 import objects.Walls;
 import personages.*;
 
@@ -20,6 +21,7 @@ public class Model {
     private ArrayList<EnemyChar> listEnemy =new ArrayList<>();
     private ArrayList<GameObjects> listObjects=new ArrayList<>();
     private ArrayList<Walls> listWalls = new ArrayList<>();
+    private ArrayList<HeroShell> listShell = new ArrayList<>();
 
     public void start(){
         chooseHero();
@@ -105,6 +107,24 @@ public class Model {
                 }
             }
         }
+        ArrayList<HeroShell> shell = new ArrayList<>();
+        if (listShell.size()>0) {
+            for (HeroShell w : listShell) {
+                if (w.isDestr()){
+                    listObjects.remove(w);
+                    Heroes heroes = (Heroes) w.getGetterAttack();
+                    heroes.attack(w.getSetterAttack());
+                    System.out.println("удалил стрелу");
+                    shell.add(w);
+                    if (w.getSetterAttack().getHelths()<=0) {
+                        listEnemy.remove(w.getSetterAttack());
+                        listObjects.remove(w.getSetterAttack());
+                    }
+                }
+            }
+        }
+        listShell.removeAll(shell);
+        if (listShell.size()==0)eventListener.stop();
         return listObjects;
     }
 
@@ -138,11 +158,38 @@ public class Model {
         }
     }
 
+    public void heroRangeAttack() {
+        EnemyChar enemyChars=null;
+        for (EnemyChar enemyChar:listEnemy){
+            int dx = heroes.getX() - enemyChar.getX();
+            int dy = heroes.getY() - enemyChar.getY();
+            int sumRad = (heroes.getHight() / 2) + (enemyChar.getHight() / 2)+200;
+            Double d = Math.sqrt((dx * dx) + (dy * dy));
+            if (d<sumRad){
+                HeroShell shell = (HeroShell) heroes.rangeAkkack(heroes,enemyChar);
+                listShell.add(shell);
+                listObjects.add(shell);
+                if (enemyChar.getHelths()<=0){
+                    enemyChars=enemyChar;
+                    break;
+                }
+            }
+        }
+        if (enemyChars!=null){
+            listEnemy.remove(enemyChars);
+            listObjects.remove(enemyChars);
+        }
+    }
+
     public void heroRest() {
         if (listEnemy.size()>0){
             heroes.setMesage("НЕ ВРЕМЯ ОТДЫХАТЬ, КРУГОМ ВРАГИ");
         }
         else heroes.setRest(true);
+    }
+
+    public ArrayList<HeroShell> getListShell() {
+        return listShell;
     }
 
     public Heroes getHeroes() {
@@ -155,13 +202,11 @@ public class Model {
 
     public void restartGame(){
         heroes=null;
-        System.out.println("герой удален");
         listEnemy=new ArrayList<>();
-        System.out.println("враги удалены");
         listObjects=new ArrayList<>();
-        System.out.println("все очищено");
         listWalls = new ArrayList<>();
-        System.out.println("даже стены");
         start();
     }
+
+
 }

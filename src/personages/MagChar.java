@@ -2,6 +2,8 @@ package personages;
 
 import model.Model;
 import objects.GameObjects;
+import objects.HeroShell;
+import objects.Spell;
 
 import javax.swing.*;
 import java.awt.*;
@@ -22,6 +24,13 @@ public class MagChar extends Heroes {
         setSpellPower(stackSP);
         setX(Model.FIELD_POSITION/2);
         setY(Model.FIELD_POSITION);
+    }
+
+
+    @Override
+    public HeroShell rangeAkkack(Pers p1, Pers p2) {
+        Spell arrow = new Spell(p1,p2);
+        return arrow;
     }
 
     @Override

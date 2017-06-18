@@ -3,6 +3,7 @@ package view;
 import controller.Controller;
 import controller.EventListener;
 import objects.GameObjects;
+import objects.HeroShell;
 import personages.Heroes;
 import personages.Pers;
 
@@ -19,7 +20,7 @@ import java.util.ArrayList;
  */
 public class View extends JFrame {
 
-    private GameLvl gameLvl;
+    private static GameLvl gameLvl;
     private Controller controller;
     String clas="";
     String nam="";
@@ -28,8 +29,10 @@ public class View extends JFrame {
         this.controller=controller;
     }
 
+
     public void update(){
         gameLvl.repaint();
+        System.out.println("sdsdsd");
     }
 
     public Controller getController() {
@@ -131,6 +134,10 @@ public class View extends JFrame {
         return controller.getHero();
     }
 
+    public ArrayList<HeroShell> getListShell(){
+        return controller.getListShell();
+    }
+
     public void gameOver() {
         JFrame frameDead = new JFrame();
         frameDead.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -194,4 +201,5 @@ public class View extends JFrame {
 
 
     }
+
 }

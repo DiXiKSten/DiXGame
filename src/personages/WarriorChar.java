@@ -24,6 +24,12 @@ public class WarriorChar extends Heroes {
         setY(Model.FIELD_POSITION);
     }
 
+
+    @Override
+    public GameObjects rangeAkkack(Pers p1, Pers p2) {
+        return null;
+    }
+
     @Override
     public void defence() {
 

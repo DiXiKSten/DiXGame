@@ -1,7 +1,9 @@
 package personages;
 
 import model.Model;
+import objects.Arrow;
 import objects.GameObjects;
+import objects.HeroShell;
 
 import javax.swing.*;
 import java.awt.*;
@@ -47,6 +49,12 @@ public class ArcherChar extends Heroes{
     @Override
     public void lvlUp() {
 
+    }
+
+    @Override
+    public HeroShell rangeAkkack(Pers p1,Pers p2) {
+        Arrow arrow = new Arrow(p1,p2);
+        return arrow;
     }
 
     @Override

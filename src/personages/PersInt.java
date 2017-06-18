@@ -7,6 +7,7 @@ import objects.GameObjects;
  */
 public interface PersInt {
     void attack(Pers gameObjects);
+    GameObjects rangeAkkack(Pers p1,Pers p2);
     void defence();
     void die();
 }

@@ -9,6 +9,8 @@ public interface EventListener {
     void move(Permeshalka p);
     String[] getChoose();
 
+    void stop();
+
     void heroAttack();
 
     int getMaxY();
@@ -20,4 +22,8 @@ public interface EventListener {
     void gameOver();
 
     void startGame();
+
+    void heroRangeAttack();
+
+    void upd();
 }

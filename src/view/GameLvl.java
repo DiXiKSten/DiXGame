@@ -3,11 +3,14 @@ package view;
 import controller.EventListener;
 import model.Permeshalka;
 import objects.GameObjects;
+import objects.HeroShell;
 import personages.Heroes;
 
 import javax.swing.*;
 
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
@@ -16,9 +19,15 @@ import java.util.ArrayList;
 /**
  * Created by DiX on 14.06.2017.
  */
-public class GameLvl extends JPanel {
+public class GameLvl extends JPanel implements ActionListener {
+    Timer timer = new Timer(200, this);
     private View view;
     private EventListener eventListener;
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        repaint();
+    }
 
     public class KeyHandler extends KeyAdapter{
         @Override
@@ -42,6 +51,10 @@ public class GameLvl extends JPanel {
                 case (KeyEvent.VK_R):
                     eventListener.heroRest();
                     break;
+                case (KeyEvent.VK_ENTER):
+                    eventListener.heroRangeAttack();
+                    timer.start();
+                    break;
             }
         }
     }
@@ -54,10 +67,13 @@ public class GameLvl extends JPanel {
         this.view=view;
         this.addKeyListener(new KeyHandler());
         this.setFocusable(true);
+
     }
 
     @Override
     public void paint(Graphics g) {
+        if (view.getListShell().size()==0)timer.stop();
+        System.out.println("обновлено");
         g.setColor(Color.WHITE);
         g.fillRect(0,0,1000,1000);
 
@@ -68,11 +84,13 @@ public class GameLvl extends JPanel {
             }
             else {
                 ArrayList<GameObjects> set2 = view.getAllGameObjects();
+                System.out.println(set2.size());;
                 for (GameObjects p : set2) {
                     p.show(g);
                 }
             }
         }
-        System.out.println("обновлено");
+
+
     }
 }

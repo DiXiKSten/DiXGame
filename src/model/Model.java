@@ -46,7 +46,7 @@ public class Model {
         listWalls.add(new Walls(750,400));
         listWalls.add(new Walls(750,450));
 
-        listEnemy.add(new Ork(850,850));
+        listEnemy.add(new Ork(800,800));
         listEnemy.add(new Ork(250,170));
 
     }

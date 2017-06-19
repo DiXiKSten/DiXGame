@@ -43,16 +43,16 @@ public class View extends JFrame {
         gameLvl = new GameLvl(this);
         add(gameLvl);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        setSize(1000, 1000);
+        setSize(900, 900);
         setLocationRelativeTo(null);
         setTitle("Супер игрушка");
         setVisible(true);
     }
     public int getWidth(){
-        return 1000;
+        return 900;
     }
     public int getHeight(){
-        return 1000;
+        return 900;
     }
 
     public String[] chooseHero(){
